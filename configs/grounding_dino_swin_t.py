@@ -202,7 +202,7 @@ test_pipeline = [
 coco2017_train_dataset = dict(
     type='ODVGDataset',
     data_root='../grounding_data/coco/',
-    ann_file='annotations/instances_train2017_vg_merged6.json',
+    ann_file='annotations/instances_train2017_vg_merged6.jsonl',
     data_prefix=dict(img='train2017'),
     filter_cfg=dict(filter_empty_gt=False),
     pipeline=train_pipeline,
@@ -217,7 +217,7 @@ coco2017_train_dataset = dict(
 flickr30k_dataset = dict(
     type='ODVGDataset',
     data_root='../grounding_data/flickr30k_entities/',
-    ann_file='flickr_train_vg7.json',
+    ann_file='flickr_train_vg7.jsonl',
     label_map_file=None,
     data_prefix=dict(img='flickr30k_images/'),
     filter_cfg=dict(filter_empty_gt=False),
@@ -233,7 +233,7 @@ flickr30k_dataset = dict(
 gqa_dataset = dict(
     type='ODVGDataset',
     data_root='../grounding_data/gqa/',
-    ann_file='gqa_train_vg7.json',
+    ann_file='gqa_train_vg7.jsonl',
     label_map_file=None,
     data_prefix=dict(img='images/'),
     filter_cfg=dict(filter_empty_gt=False),
@@ -249,7 +249,7 @@ gqa_dataset = dict(
 caption_dataset = dict(
     type='ODVGDataset',
     data_root='../grounding_data/llava_cap/',
-    ann_file='LLaVA-ReCap-558K_tag_box_vg7.json',
+    ann_file='LLaVA-ReCap-558K_tag_box_vg7.jsonl',
     label_map_file=None,
     data_prefix=dict(img='images/'),
     filter_cfg=dict(filter_empty_gt=False),
@@ -265,7 +265,7 @@ caption_dataset = dict(
 v3det_dataset = dict(
     type='ODVGDataset',
     data_root='../grounding_data/v3det/',
-    ann_file='annotations/v3det_2023_v1_train_vg7.json',
+    ann_file='annotations/v3det_2023_v1_train_vg7.jsonl',
     label_map_file=None,
     data_prefix=dict(img=''),
     filter_cfg=dict(filter_empty_gt=False),
