@@ -42,35 +42,35 @@ Note: other environments may also work.
 
 ```
 ｜--huggingface
-｜	|--bert-base-uncased
-｜	|--siglip-so400m-patch14-384
-｜	|--my_llava-onevision-qwen2-0.5b-ov-2
-｜	|--mm_grounding_dino
-｜	| |--grounding_dino_swin-t_pretrain_obj365_goldg_grit9m_v3det_20231204_095047-b448804b.pth
-｜	| |--grounding_dino_swin-b_pretrain_obj365_goldg_v3de-f83eef00.pth
-｜	| |--grounding_dino_swin-l_pretrain_obj365_goldg-34dcdc53.pth
+｜  |--bert-base-uncased
+｜  |--siglip-so400m-patch14-384
+｜  |--my_llava-onevision-qwen2-0.5b-ov-2
+｜  |--mm_grounding_dino
+｜  |  |--grounding_dino_swin-t_pretrain_obj365_goldg_grit9m_v3det_20231204_095047-b448804b.pth
+｜  |  |--grounding_dino_swin-b_pretrain_obj365_goldg_v3de-f83eef00.pth
+｜  |  |--grounding_dino_swin-l_pretrain_obj365_goldg-34dcdc53.pth
 ｜--grounding_data
-｜	|--coco
-｜	|	|--annotations
-｜	|	| |--instances_train2017_vg_merged6.jsonl
-｜	|	| |--instances_val2017.json
-｜	|	|	|--lvis_v1_minival_inserted_image_name.json
-｜	|	|	|--lvis_od_val.json
-｜	|	|--train2017
-｜	|	|--val2017
-｜	|--flickr30k_entities
-｜	|	|--flickr_train_vg7.jsonl
-｜	|	|--flickr30k_images
-｜	|--gqa
-｜	|	|--gqa_train_vg7.jsonl
-｜	|	|--images
-｜	|--llava_cap
-｜	|	|--LLaVA-ReCap-558K_tag_box_vg7.jsonl
-｜	|	|--images
-｜	|--v3det
-｜	|	|--annotations
-｜	|	| |--v3det_2023_v1_train_vg7.jsonl
-｜	|	|--images
+｜  |--coco
+｜  |  |--annotations
+｜  |  |  |--instances_train2017_vg_merged6.jsonl
+｜  |  |  |--instances_val2017.json
+｜  |  |  |--lvis_v1_minival_inserted_image_name.json
+｜  |  |  |--lvis_od_val.json
+｜  |  |--train2017
+｜  |  |--val2017
+｜  |--flickr30k_entities
+｜  |  |--flickr_train_vg7.jsonl
+｜  |  |--flickr30k_images
+｜  |--gqa
+｜  |  |--gqa_train_vg7.jsonl
+｜  |  |--images
+｜  |--llava_cap
+｜  |  |--LLaVA-ReCap-558K_tag_box_vg7.jsonl
+｜  |  |--images
+｜  |--v3det
+｜  |  |--annotations
+｜  |  |  |--v3det_2023_v1_train_vg7.jsonl
+｜  |  |--images
 ｜--LLMDet (code)
 ```
 
