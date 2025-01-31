@@ -1,0 +1,43 @@
+#!/bin/bash
+
+WANDB__SERVICE_WAIT=300 deepspeed train.py \
+    --lora_enable True --lora_r 128 --lora_alpha 256 --mm_projector_lr 2e-5 \
+    --deepspeed ./scripts/zero2.json \
+    --model_name_or_path /home/shenghao2/myLMM/huggingface/llava-onevision-qwen2-0.5b-ov/ \
+    --version qwen_1_5 \
+    --data_path /mnt/Datasets/LLaVA/LLaVA-Instruct-150K/llava_v1_5_mix665k.json \
+    --image_folder /mnt/Datasets/LLaVA/LLaVA-Instruct-150K/data \
+    --vision_tower grounding_dino_mixed \
+    --vision_tower_weight_path /home/shenghao2/myLMM/huggingface/mm_grounding_dino/grounding_dino_swin-t_pretrain_obj365_goldg_grit9m_v3det_20231204_095047-b448804b.pth+/home/shenghao2/myLMM/huggingface/ram_plus/ram_plus_swin_large_14m.pth \
+    --pretrain_mm_mlp_adapter ./checkpoints/llava-grounding_dino_mixed-pretrain/checkpoint-2000/mm_projector.bin \
+    --load_ram True \
+    --grounding_dino_config configs/grounding_dino_t_for_alignment.py \
+    --bert_base_path /home/shenghao2/myLMM/huggingface/bert-base-uncased/ \
+    --mm_projector_type mlp2x_gelu \
+    --mm_vision_select_layer -2 \
+    --mm_use_im_start_end False \
+    --mm_use_im_patch_token False \
+    --image_aspect_ratio pad \
+    --group_by_modality_length True \
+    --bf16 False \
+    --fp16 True \
+    --output_dir ./checkpoints/llava-onevision-qwen2-0.5b-ov-lora-mixed \
+    --num_train_epochs 1 \
+    --per_device_train_batch_size 4 \
+    --per_device_eval_batch_size 4 \
+    --gradient_accumulation_steps 8 \
+    --evaluation_strategy "no" \
+    --save_strategy "steps" \
+    --save_steps 500 \
+    --save_total_limit 1 \
+    --learning_rate 2e-4 \
+    --weight_decay 0. \
+    --warmup_ratio 0.03 \
+    --lr_scheduler_type "cosine" \
+    --logging_steps 1 \
+    --tf32 False \
+    --model_max_length 2048 \
+    --gradient_checkpointing True \
+    --dataloader_num_workers 4 \
+    --lazy_preprocess True \
+    --report_to wandb
