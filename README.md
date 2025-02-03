@@ -108,7 +108,7 @@ LLMDet is released under the Apache 2.0 license. Please see the LICENSE file for
 
 ### 7 Bibtex
 
-If you find our work helpful for your research, please consider citing our paper (Coming very soon!).
+If you find our work helpful for your research, please consider citing our paper.
 
 ```
 @article{fu2025llmdet,
