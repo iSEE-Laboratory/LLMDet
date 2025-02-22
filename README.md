@@ -112,7 +112,7 @@ If you find our work helpful for your research, please consider citing our paper
 
 ```
 @article{fu2025llmdet,
-  title={Frozen-DETR: Enhancing DETR with Image Understanding from Frozen Foundation Models},
+  title={LLMDet: Learning Strong Open-Vocabulary Object Detectors under the Supervision of Large Language Models},
   author={Fu, Shenghao and Yang, Qize and Mo, Qijie and Yan, Junkai and Wei, Xihan and Meng, Jingke and Xie, Xiaohua and Zheng, Wei-Shi},
   journal={arXiv preprint arXiv:2501.18954},
   year={2025}
