@@ -3,6 +3,7 @@
 ## LLMDet: Learning Strong Open-Vocabulary Object Detectors under the Supervision of Large Language Models
 
 This is the official PyTorch implementation of [LLMDet](https://arxiv.org/abs/2501.18954).
+
 🎉🎉🎉 Our paper is accepted by CVPR 2025, congratulations and many thanks to the co-authors!
 
 ### 1 Introduction
