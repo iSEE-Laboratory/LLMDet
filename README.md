@@ -122,7 +122,7 @@ nltk.download('stopwords')
 
 ```
 python image_demo.py images/demo.jpeg \
-	configs/grounding_dino_swin_t.py --weight tiny.pth \
+  configs/grounding_dino_swin_t.py --weight tiny.pth \
   --text 'apple .' -c --pred-score-thr 0.4
 ```
 
@@ -134,7 +134,7 @@ python image_demo.py images/demo.jpeg \
 
 ```
 python image_demo.py images/demo.jpeg \
-	configs/grounding_dino_swin_t.py --weight tiny.pth \
+  configs/grounding_dino_swin_t.py --weight tiny.pth \
   --text 'There are many apples here.' --pred-score-thr 0.35
 ```
 
@@ -146,7 +146,7 @@ python image_demo.py images/demo.jpeg \
 
 ```
 python image_demo.py images/demo.jpeg \
-	configs/grounding_dino_swin_t.py --weight tiny.pth \
+  configs/grounding_dino_swin_t.py --weight tiny.pth \
   --text 'red apple.' --tokens-positive -1 --pred-score-thr 0.4
 ```
 
