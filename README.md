@@ -8,7 +8,7 @@ This is the official PyTorch implementation of [LLMDet](https://arxiv.org/abs/25
 
 ### 1 Introduction
 
-<img src="./compare_result.png" style="zoom:30%;" />
+<img src="./images/compare_result.png" style="zoom:30%;" />
 
 Recent open-vocabulary detectors achieve promising performance with abundant region-level annotated data. In this work, we show that an open-vocabulary detector co-training with a large language model by generating image-level detailed captions for each image can further improve performance. To achieve the goal, we first collect a dataset, GroundingCap-1M, wherein each image is accompanied by associated grounding labels and an image-level detailed caption. With this dataset, we finetune an open-vocabulary detector with training objectives including a standard grounding loss and a caption generation loss. We take advantage of a large language model to generate both region-level short captions for each region of interest and image-level long captions for the whole image. Under the supervision of the large language model, the resulting detector, LLMDet, outperforms the baseline by a clear margin, enjoying superior open-vocabulary ability. Further, we show that the improved LLMDet can in turn build a stronger large multi-modal model, achieving mutual benefits.
 
@@ -103,6 +103,50 @@ bash dist_train.sh configs/grounding_dino_swin_t.py 8 --amp
 ```
 bash dist_test.sh configs/grounding_dino_swin_t.py tiny.pth 8
 ```
+
+#### 5.3 Demo
+
+```
+import nltk
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('punkt_tab')
+nltk.download('averaged_perceptron_tagger_eng')
+nltk.download('stopwords')
+```
+
+- For Phrase Grounding and Referential Expression Comprehension, users should first download `nltk` packages.
+- If you do not want to load the llm during inference, please modify the config `lmm=None`.
+
+1. Open-Vocabuary Object Detection (开放词汇目标检测)
+
+```
+python image_demo.py images/demo.jpeg configs/grounding_dino_swin_t.py --weight tiny.pth --text 'apple .' -c --pred-score-thr 0.4
+```
+
+<div align=center>
+<img src="./images/demo_1.jpeg" width="70%"/>
+</div>
+
+2. Phrase Grounding (短语定位)
+
+```
+python image_demo.py images/demo.jpeg configs/grounding_dino_swin_t.py --weight tiny.pth --text 'There are many apples here.' --pred-score-thr 0.35
+```
+
+<div align=center>
+<img src="./images/demo_2.jpeg" width="70%"/>
+</div>
+
+3. Referential Expression Comprehension (指代性表达式理解)
+
+```
+python image_demo.py images/demo.jpeg configs/grounding_dino_swin_t.py --weight tiny.pth --text 'red apple.' --tokens-positive -1 --pred-score-thr 0.4
+```
+
+<div align=center>
+<img src="./images/demo_3.jpeg" width="70%"/>
+</div>
 
 ### 6 License
 

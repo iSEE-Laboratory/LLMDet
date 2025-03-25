@@ -1263,7 +1263,7 @@ class GroundingDINO(DINO):
                 label_names = []
                 for labels in pred_instances.labels:
                     if is_rec_task:
-                        label_names.append(entity)
+                        label_names.append(text_prompts[i])
                         continue
                     if labels >= len(entity):
                         warnings.warn(
