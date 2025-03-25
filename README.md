@@ -121,7 +121,9 @@ nltk.download('stopwords')
 1. Open-Vocabuary Object Detection (开放词汇目标检测)
 
 ```
-python image_demo.py images/demo.jpeg configs/grounding_dino_swin_t.py --weight tiny.pth --text 'apple .' -c --pred-score-thr 0.4
+python image_demo.py images/demo.jpeg \
+	configs/grounding_dino_swin_t.py --weight tiny.pth \
+  --text 'apple .' -c --pred-score-thr 0.4
 ```
 
 <div align=center>
@@ -131,7 +133,9 @@ python image_demo.py images/demo.jpeg configs/grounding_dino_swin_t.py --weight 
 2. Phrase Grounding (短语定位)
 
 ```
-python image_demo.py images/demo.jpeg configs/grounding_dino_swin_t.py --weight tiny.pth --text 'There are many apples here.' --pred-score-thr 0.35
+python image_demo.py images/demo.jpeg \
+	configs/grounding_dino_swin_t.py --weight tiny.pth \
+  --text 'There are many apples here.' --pred-score-thr 0.35
 ```
 
 <div align=center>
@@ -141,7 +145,9 @@ python image_demo.py images/demo.jpeg configs/grounding_dino_swin_t.py --weight 
 3. Referential Expression Comprehension (指代性表达式理解)
 
 ```
-python image_demo.py images/demo.jpeg configs/grounding_dino_swin_t.py --weight tiny.pth --text 'red apple.' --tokens-positive -1 --pred-score-thr 0.4
+python image_demo.py images/demo.jpeg \
+	configs/grounding_dino_swin_t.py --weight tiny.pth \
+  --text 'red apple.' --tokens-positive -1 --pred-score-thr 0.4
 ```
 
 <div align=center>
