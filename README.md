@@ -6,6 +6,8 @@ This is the official PyTorch implementation of [LLMDet](https://arxiv.org/abs/25
 
 🎉🎉🎉 Our paper is accepted by CVPR 2025, congratulations and many thanks to the co-authors!
 
+If you find our work helpful, please kindly give us a star🌟
+
 ### 1 Introduction
 
 <img src="./images/compare_result.png" style="zoom:30%;" />
