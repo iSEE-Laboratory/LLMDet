@@ -4,7 +4,7 @@
 
 This is the official PyTorch implementation of [LLMDet](https://arxiv.org/abs/2501.18954).
 
-🎉🎉🎉 Our paper is accepted by CVPR 2025, congratulations and many thanks to the co-authors!
+🎉🎉🎉 Our paper is accepted by CVPR 2025 as a highlight paper✨, congratulations and many thanks to the co-authors!
 
 If you find our work helpful, please kindly give us a star🌟
 
