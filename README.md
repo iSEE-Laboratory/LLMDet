@@ -10,6 +10,7 @@ If you find our work helpful, please kindly give us a star🌟
 
 ### Updates
 
+- **[2025.06.06]** Added [Gradio demo](https://huggingface.co/spaces/mrdbourke/LLMDet-demo) to Hugging Face, you can now try out LLMDet in your browser.
 - **[2025.04.07]** Update demo in huggingface. Release huggingface checkpoints.
 - **[2025.04.04]** Our paper was selected as a highlight paper in CVPR2025.
 - **[2025.03.25]** Update demo in mmdet.
