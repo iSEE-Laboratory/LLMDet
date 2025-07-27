@@ -2985,22 +2985,27 @@ class GroundingDinoForObjectDetection(GroundingDinoPreTrainedModel):
         super().__init__(config)
 
         self.model = GroundingDinoModel(config)
-        _class_embed = GroundingDinoContrastiveEmbedding(config)
 
         if config.decoder_bbox_embed_share:
             _bbox_embed = GroundingDinoMLPPredictionHead(
                 input_dim=config.d_model, hidden_dim=config.d_model, output_dim=4, num_layers=3
             )
             self.bbox_embed = nn.ModuleList([_bbox_embed for _ in range(config.decoder_layers)])
+            _class_embed = GroundingDinoContrastiveEmbedding(config)
+            self.class_embed = nn.ModuleList([_class_embed for _ in range(config.decoder_layers)])
         else:
-            model_list = []
+            _bbox_embed_list = []
+            _class_embed_list = []
             for _ in range(config.decoder_layers):
                 _bbox_embed = GroundingDinoMLPPredictionHead(
                     input_dim=config.d_model, hidden_dim=config.d_model, output_dim=4, num_layers=3
                 )
-                model_list.append(_bbox_embed)
-            self.bbox_embed = nn.ModuleList(model_list)
-        self.class_embed = nn.ModuleList([_class_embed for _ in range(config.decoder_layers)])
+                _bbox_embed_list.append(_bbox_embed)
+                _class_embed = GroundingDinoContrastiveEmbedding(config)
+                _class_embed_list.append(_class_embed)
+            self.bbox_embed = nn.ModuleList(_bbox_embed_list)
+            self.class_embed = nn.ModuleList(_class_embed_list)
+        
         # hack for box-refinement
         self.model.decoder.bbox_embed = self.bbox_embed
         # hack implementation for two-stage
