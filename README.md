@@ -10,6 +10,7 @@ If you find our work helpful, please kindly give us a star🌟
 
 ### Updates
 
+- **[2025.08.06]** 🔥🔥🔥 LLMDet is merged into official `transformers==4.55.0` ! Install the latest `transformers` and try out LLMDet.
 - **[2025.06.06]** 🔥🔥🔥 Added [Gradio demo](https://huggingface.co/spaces/mrdbourke/LLMDet-demo) to Hugging Face, you can now try out LLMDet in your browser. (Thanks to [Daniel Bourke](https://github.com/mrdbourke) for valuable contributions)
 - **[2025.04.07]** Update demo in huggingface. Release huggingface checkpoints.
 - **[2025.04.04]** Our paper was selected as a highlight paper in CVPR2025.
@@ -167,7 +168,43 @@ python image_demo.py images/demo.jpeg \
 
 #### 5.4 Use LLMDet in Huggingface
 
-- Please refer to [hf_readme](https://github.com/iSEE-Laboratory/LLMDet/tree/main/hf_model).
+- LLMDet is now merged into official `transformers==4.55.0`. You can use LLMDet with just a few lines of code!
+```
+import torch
+from transformers import AutoModelForZeroShotObjectDetection, AutoProcessor
+from transformers.image_utils import load_image
+
+
+# Prepare processor and model
+model_id = "iSEE-Laboratory/llmdet_tiny"
+device = "cuda" if torch.cuda.is_available() else "cpu"
+processor = AutoProcessor.from_pretrained(model_id)
+model = AutoModelForZeroShotObjectDetection.from_pretrained(model_id).to(device)
+
+# Prepare inputs
+image_url = "http://images.cocodataset.org/val2017/000000039769.jpg"
+image = load_image(image_url)
+text_labels = [["a cat", "a remote control"]]
+inputs = processor(images=image, text=text_labels, return_tensors="pt").to(device)
+
+# Run inference
+with torch.no_grad():
+    outputs = model(**inputs)
+
+# Postprocess outputs
+results = processor.post_process_grounded_object_detection(
+    outputs,
+    threshold=0.4,
+    target_sizes=[(image.height, image.width)]
+)
+
+# Retrieve the first image result
+result = results[0]
+for box, score, labels in zip(result["boxes"], result["scores"], result["labels"]):
+    box = [round(x, 2) for x in box.tolist()]
+    print(f"Detected {labels} with confidence {round(score.item(), 3)} at location {box}")
+```
+- For users with other versions, please refer to [hf_readme](https://github.com/iSEE-Laboratory/LLMDet/tree/main/hf_model).
 
 ### 6 License
 
