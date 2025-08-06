@@ -1,5 +1,11 @@
 # Use LLMDet in Huggingface🤗
 
+**Note:** LLMDet has been merged into `transformers` since `v4.55.0`. We recommend installing the latest version of `transformers`. Therefore, you do not need to change any files.
+
+____________________________________________________________________________
+
+For users with other version of `transformers`, you should modify the `modeling_grounding_dino.py` file as below.
+
 Checkpoint:
 
 [llmdet_swin_tiny_hf](https://huggingface.co/fushh7/llmdet_swin_tiny_hf), [llmdet_swin_base_hf](https://huggingface.co/fushh7/llmdet_swin_base_hf), [llmdet_swin_large_hf](https://huggingface.co/fushh7/llmdet_swin_large_hf)
