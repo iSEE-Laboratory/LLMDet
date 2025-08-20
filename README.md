@@ -52,7 +52,7 @@ Note: other environments may also work.
 - mmcv==2.2.0, mmengine==0.10.5
 - timm, deepspeed, pycocotools, lvis, jsonlines, fairscale, nltk, peft, wandb
 
-### 4 Data Preparation
+### 4 Data Preparation (GroundingCap-1M)
 
 ```
 ｜--huggingface
