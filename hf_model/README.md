@@ -6,6 +6,41 @@ LLMDet has been merged into `transformers` since `v4.55.0`. We recommend install
 
 **Note:** For users using the models in official `transformers`, you should download models at [iSEE-Laboratory](https://huggingface.co/collections/iSEE-Laboratory/llmdet-688475906dc235d5f1dc678e).
 
+```
+import torch
+from transformers import AutoModelForZeroShotObjectDetection, AutoProcessor
+from transformers.image_utils import load_image
+
+
+# Prepare processor and model
+model_id = "iSEE-Laboratory/llmdet_tiny"
+device = "cuda" if torch.cuda.is_available() else "cpu"
+processor = AutoProcessor.from_pretrained(model_id)
+model = AutoModelForZeroShotObjectDetection.from_pretrained(model_id).to(device)
+
+# Prepare inputs
+image_url = "http://images.cocodataset.org/val2017/000000039769.jpg"
+image = load_image(image_url)
+text_labels = [["a cat", "a remote control"]]
+inputs = processor(images=image, text=text_labels, return_tensors="pt").to(device)
+
+# Run inference
+with torch.no_grad():
+    outputs = model(**inputs)
+
+# Postprocess outputs
+results = processor.post_process_grounded_object_detection(
+    outputs,
+    threshold=0.4,
+    target_sizes=[(image.height, image.width)]
+)
+
+# Retrieve the first image result
+result = results[0]
+for box, score, labels in zip(result["boxes"], result["scores"], result["labels"]):
+    box = [round(x, 2) for x in box.tolist()]
+    print(f"Detected {labels} with confidence {round(score.item(), 3)} at location {box}")
+```
 ____________________________________________________________________________
 
 ### 2. For users with transformers < 4.55.0
