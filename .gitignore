@@ -1,1 +1,31 @@
 *.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Checkpoints and model weights
+checkpoints/
+work_dirs/
+*.pth
+*.ckpt
+
+# Outputs
+outputs/
+results/
+demo_output/
+
+# Logs
+*.log
+wandb/
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.swp
+*.swo
+*~
