@@ -10,6 +10,7 @@ If you find our work helpful, please kindly give us a star🌟
 
 ### Updates
 
+- **[2026.02.03]** We release the first MLLM-based object embedding model [ObjEmbed](https://github.com/WeChatCV/ObjEmbed).
 - **[2025.12.16]** We release a series of more advanced model [WeDetect](https://github.com/WeChatCV/WeDetect).
 - **[2025.08.06]** 🔥🔥🔥 LLMDet is merged into official `transformers==4.55.0` ! Install the latest `transformers` and try out LLMDet.
 - **[2025.06.06]** 🔥🔥🔥 Added [Gradio demo](https://huggingface.co/spaces/mrdbourke/LLMDet-demo) to Hugging Face, you can now try out LLMDet in your browser. (Thanks to [Daniel Bourke](https://github.com/mrdbourke) for valuable contributions)
